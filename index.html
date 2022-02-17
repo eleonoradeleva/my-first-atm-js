@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+    <title>ATMBank</title>
+</head>
+<body>
+    <form className="form-control" id='form-control' method="post" onsubmit="handleSumbit">
+        Please enter your Pin: <input type="password" name="number" id="number" />
+        <input type="button" name="submit" id="submitN" onclick="getAction()" value="OK" />
+        <p id="pdemo"> </p>
+        <div id="amounts" style="display:none;">
+        <input type="text" id="amount" placeholder="Enter withdrwal amount">
+        <div id="dialog" title="Basic dialog">
+            <input type="password" id='password' size="25" />
+        </div>
+        <input type='button' className="submit" id="enter" onclick="takeMoney()" value='submit' />
+        </div>
+        <div id="result">
+            </div>
+        <div id="history" style="display:none;">
+            <button type="button" name="detail" id="details" onClick="getAmount()" value="submit" placeholder="password">
+                Check
+            </button>
+        <div id="row">
+        </div>
+        </div>
+    </form>
+</body>
+</html>
+<script type="text/javascript">
+const handleSubmit = (e) => {
+    e.preventDefault();
+}
+    async function  getAction() 
+    {
+        var password = parseInt(document.getElementById('number').value);
+        var correctPasword = 8888;
+        var count = 0;
+        if(password == correctPasword){
+            document.getElementById('pdemo').innerHTML = "Please choose amount: "
+            document.getElementById('amounts').style.display = 'block'
+        }
+        else 
+        {
+            count++;
+        if(count>3){
+            console.log('locked');
+            document.getElementById('number').innerHTML='Locked for 3 seconds';
+        }
+        document.getElementById('amounts').style.display = 'none'
+        document.getElementById('result').style.display = 'none';
+        document.getElementById('history').style.display = 'none';
+        document.getElementById('pdemo').innerHTML = 'Invalid password';
+        }
+        document.getElementById('number').value='';
+    }
+    function getAmount() {
+            var resultForPrint= '';
+            resultForPrint = document.getElementById('row').innerHTML = `  
+        <h4>Date: </h4>
+        <h4>Amount: lv.</h4>
+        <h4>Tax is: lv.</h4>
+        <h4>Withdraw amount: lv</h4>`
+        }
+    
+async function takeMoney() {
+    'use strict';
+    var withdrwal = 1000;
+    var amountEl = document.getElementById('amount');
+    var amountRequired = amountEl.value;
+    var tax = amountRequired * .02;
+    var passwordEl = document.getElementById('password');
+    var password = parseInt(document.getElementById('password').value)
+    var correctPasword = 8888;
+    var count = 0;
+    var history = [];
+    while(password === correctPasword){
+    function getTheMoney(amountRequired) {
+        var avaibaleMoney = [100, 50, 20, 10];
+        var result = [];
+        var moneyCount =[];
+        result.push(amountRequired);
+        if (amountRequired && amountRequired > 0 && amountRequired < 400 && withdrwal-amountRequired > 0 && password === correctPasword) {
+                document.getElementById('history').style.display = 'block';
+                while (amountRequired > 0) {
+                for (var i = 0; i < avaibaleMoney.length; i++) {
+                    var money = avaibaleMoney[i];
+                    if (amountRequired - money >= 0) {  
+                        amountRequired -= money;
+                        withdrwal -=money;
+                        moneyCount.push(money);   
+                    } else if (i === avaibaleMoney.length - 1 && amountRequired > 0 && withdrwal <=0) {
+                        throw ('MoneyUnavailableException');
+                    }
+                }
+            }
+        } else if (amountRequired <= 0 ) {
+            result = 'InvalidArgumentExc';
+        } else if(amountRequired > 400) {
+            result = 'You cannot take more than 400 in onetime';
+        } else if(amountRequired == '' || password == '' || password !== correctPasword){
+            count++;
+
+            if(count > 3) {
+                document.getElementById('pdemo').innerHTML = 'is locked';
+            }
+            throw 'Tho both have to be correct'
+        }
+            function fixDate(dateNow)
+            {
+            var date = dateNow.getDate() + '-' + (dateNow.getMonth() + 1) + '-' + dateNow.getFullYear();
+            var time = dateNow.getHours() + '-' + dateNow.getMinutes() + '-' + dateNow.getSeconds();
+            var dateTime = date + ' ' + time;
+            history.push(dateTime);
+            history.push(tax);
+            return dateTime;
+            };
+
+        result.push(amountRequired);
+        history.push(amountRequired);
+
+        var resultForPrint = document.getElementById('result').innerHTML=`
+        <h3>Date: ${fixDate(new Date())}</h3>
+        <h3>Banknotes: ${moneyCount}</h3>
+        <h3>Amount: ${parseInt(result[0]).toFixed(2)}lv.</h3>
+        <h3>Tax is: ${tax.toFixed(2)}lv.</h3>
+        <h3>Withdraw amount: ${withdrwal.toFixed(2)}lv</h3>
+        ` ;
+        return resultForPrint;
+        
+    }
+    amountEl.value = '';
+    passwordEl.value = '';
+    getTheMoney(amountRequired);
+    break;
+}};
+</script>

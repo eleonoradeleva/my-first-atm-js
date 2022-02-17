@@ -1,0 +1,110 @@
+:root {
+  background: rgb(38, 249, 111);
+  background: linear-gradient(
+    90deg,
+    rgba(38, 249, 111, 1) 0%,
+    rgba(120, 252, 144, 1) 40%,
+    rgba(22, 255, 142, 1) 100%
+  );
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+#form-control {
+  text-transform: uppercase;
+  letter-spacing: var(--mainSpacing);
+  color: green;
+  border: 2px solid greenyellow;
+  padding: 0.45rem 0.8rem;
+  display: inline-block;
+  transition: var(--mainTransition);
+  cursor: pointer;
+  font-size: 0.8rem;
+  background: transparent;
+  border-radius: var(--mainBorderRadius);
+  display: inline-block;
+}
+
+body {
+  background: var(--background-color);
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h3,
+div {
+  font-family: var(--slantedFont);
+  margin-bottom: 1.25rem;
+  letter-spacing: var(--mainSpacing);
+  text-decoration: none;
+  color: green;
+}
+#submitN,
+#enter,
+#details {
+  text-transform: uppercase;
+  letter-spacing: var(--mainSpacing);
+  color: green;
+  border: 2px solid green;
+  padding: 0.45rem 0.8rem;
+  display: inline-block;
+  transition: var(--mainTransition);
+  cursor: pointer;
+  font-size: 0.8rem;
+  background: transparent;
+  border-radius: var(--mainBorderRadius);
+  display: inline-block;
+}
+
+i,
+h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: var(--smallWidth);
+  margin: 0 auto;
+  max-width: var(--fullWidth);
+}
+
+#result {
+  text-transform: none;
+  letter-spacing: var(--mainSpacing);
+  color: green;
+  padding: 0.45rem 0.8rem;
+  display: inline-block;
+  transition: var(--mainTransition);
+  cursor: pointer;
+  font-size: 0.8rem;
+  background: transparent;
+  border-radius: var(--mainBorderRadius);
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+#pdemo {
+  text-transform: uppercase;
+  letter-spacing: var(--mainSpacing);
+  color: red;
+  padding: 0.45rem 0.8rem;
+}
+
+#number,
+#enter,
+#details,
+#submitN {
+  align-items: center;
+  width: 100%;
+}
+
+#amount {
+  padding-left: 9%;
+  white-space: normal;
+}
